@@ -4,7 +4,7 @@
 [![Gem Version](https://badge.fury.io/rb/media_types-validation.svg)](https://badge.fury.io/rb/media_types-validation)
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
-Authorize a certain block with cancan
+Add controller time validation for [media types](https://github.com/SleeplessByte/media_types-ruby) and react accordingly.
 
 ## Installation
 
@@ -72,6 +72,11 @@ MediaTypes::Validation.configure do
   self.raise_on_json_invalid_media = true
 end
 ```
+
+### Related
+
+- [`MediaTypes`](https://github.com/SleeplessByte/media_types-ruby): :gem: Library to create media type definitions, schemes and validations
+- [`MediaTypes::Serialization`](https://github.com/XPBytes/media_types-serialization): Add media types supported serialization using your favourite serializer
 
 ## Development
 
