@@ -10,10 +10,10 @@ module MediaTypes
 
     extend ActiveSupport::Concern
 
-    attr_accessor :json_invalid_media_proc, :raise_on_json_invalid_media
+    mattr_accessor :json_invalid_media_proc, :raise_on_json_invalid_media
 
-    def self.configure
-      yield self
+    def self.configure(&block)
+      instance_exec self, &block
     end
 
     def validate_json_with_media_type(body, media_type:)
@@ -42,7 +42,7 @@ module MediaTypes
       json_valid_media_or_throw?(body, media_type: media_type)
     rescue ::MediaTypes::Scheme::ValidationError => err
       if json_invalid_media_proc.respond_to?(:call)
-        json_invalid_media_proc(self, media_type: media_type, err: err, body: body)
+        instance_exec(media_type: media_type, err: err, body: body, &json_invalid_media_proc)
       else
         message = format(
           '[media type validation] The data being sent as %<media_type>s is invalid:' + "\n" \

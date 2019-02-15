@@ -24,7 +24,10 @@ Or install it yourself as:
 
 ## Usage
 
-I
+If you add the `MediaTypes::Validation` controller concern, `validate_json_with_media_type` becomes available during
+actions. This does _not_ validate only `JSON` output, but stringifies and then parses the body as `JSON`, so the 
+limitations of `JSON` apply. This step is necessary in order to make sure `rails` types and others are first correctly
+casted (and formatted).
 
 ```ruby
 require 'media_types/validation'
@@ -51,19 +54,22 @@ class BookController < ApiController
 end
 ```
 
+By default, this method only outputs to `stderr` when something is wrong; see configuration below if you want to assign
+your own behaviour, such as adding a `Warn` header, or raising a server error.
+
 ### Configuration
 
 In an initializer you can set procs in order to change the default behaviour:
 
 ```ruby
-MediaTypes::Validation.configure do |this|
-  this.json_invalid_media_proc = proc do |controller, media_type:, err:, body:| 
-    controller.response['Warn'] = '199 media type %s is invalid (%s)' % [media_type, err]
-    warn controller.response['Warn'] + "\n" + body
+MediaTypes::Validation.configure do
+  self.json_invalid_media_proc = proc do |media_type:, err:, body:| 
+    response['Warn'] = '199 media type %s is invalid (%s)' % [media_type, err]
+    warn response['Warn'] + "\n" + body
   end
   
   # Or alternatively you can always raise
-  this.raise_on_json_invalid_media = true
+  self.raise_on_json_invalid_media = true
 end
 ```
 
