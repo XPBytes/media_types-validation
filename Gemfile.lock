@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    media_types-validation (0.1.0)
+    media_types-validation (0.2.0)
       activesupport (>= 4.0.0)
       media_types (>= 0.6.0)
       oj (>= 3.5.0)
