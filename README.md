@@ -75,8 +75,8 @@ end
 
 ### Related
 
-- [`MediaTypes`](https://github.com/SleeplessByte/media_types-ruby): :gem: Library to create media type definitions, schemes and validations
-- [`MediaTypes::Serialization`](https://github.com/XPBytes/media_types-serialization): Add media types supported serialization using your favourite serializer
+- [`MediaTypes`](https://github.com/SleeplessByte/media-types-ruby): :gem: Library to create media type definitions, schemes and validations
+- [`MediaTypes::Serialization`](https://github.com/XPBytes/media_types-serialization): :cyclone: Add media types supported serialization using your favourite serializer
 
 ## Development
 
