@@ -6,6 +6,10 @@
 
 Add controller time validation for [media types](https://github.com/SleeplessByte/media_types-ruby) and react accordingly.
 
+## Deprecated since `media-types-serialization@1.0.0`
+
+This library will nog longer receive updates because it has been completely obsoleted by changes in the `media-types-serialization`. That library now takes care validating _all_ media-type based serialization responses and media-type based deserialization requests.
+
 ## Installation
 
 Add this line to your application's Gemfile:
